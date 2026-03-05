@@ -3,8 +3,8 @@ import { programService } from '@/lib/services/programService';
 import { formatCurrency } from '@/lib/utils';
 import { ProgramActions } from './ProgramActions';
 
-export default function ProgramDetailPage({ params }: { params: { id: string } }) {
-  const { id } = params;
+export default async function ProgramDetailPage({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params;
   const program = programService.byId(id);
   if (!program) return notFound();
 
