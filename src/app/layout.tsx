@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import './globals.css';
 import { Navbar } from '@/components/Navbar';
-import { Footer } from '@/components/Footer';
+import { FooterGate } from '@/components/FooterGate';
 import { ToastViewport } from '@/components/ToastViewport';
 
 export const metadata: Metadata = {
@@ -20,7 +20,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       <body className="font-body">
         <Navbar />
         <main className="container-shell py-6 md:py-8">{children}</main>
-        <Footer />
+        <FooterGate />
         <ToastViewport />
       </body>
     </html>

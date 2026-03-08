@@ -71,3 +71,71 @@ a {
 .btn-secondary {
   @apply inline-flex items-center justify-center rounded-full border border-slate-300 bg-white/95 px-5 py-2.5 text-sm font-semibold text-slate-700 transition duration-500 ease-out hover:-translate-y-0.5 hover:border-teal-600 hover:text-teal-700 hover:shadow-[0_14px_30px_-20px_rgba(15,35,47,0.55)];
 }
+
+@keyframes sponsor-marquee-forward {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+@keyframes sponsor-marquee-reverse {
+  0% {
+    transform: translate3d(-50%, 0, 0);
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.marquee-row {
+  @apply overflow-hidden rounded-2xl border border-white/10 bg-white/[0.02] py-3;
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  will-change: transform;
+}
+
+.marquee-track-forward {
+  animation: sponsor-marquee-forward var(--marquee-duration, 42s) linear infinite;
+}
+
+.marquee-track-reverse {
+  animation: sponsor-marquee-reverse var(--marquee-duration, 56s) linear infinite;
+}
+
+.marquee-row:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+.marquee-group {
+  display: flex;
+  gap: 1rem;
+  padding-inline: 0.5rem;
+}
+
+.sponsor-tile {
+  @apply w-[190px] shrink-0 rounded-xl border border-white/20 bg-white/[0.06] px-4 py-4 shadow-[0_18px_35px_-26px_rgba(2,11,30,0.9)] backdrop-blur transition duration-500 ease-out hover:-translate-y-1 hover:scale-[1.01] hover:border-[#86efe0]/70 hover:bg-white/[0.14] hover:shadow-[0_22px_42px_-24px_rgba(97,223,208,0.45)];
+}
+
+@media (min-width: 768px) {
+  .marquee-group {
+    gap: 1.25rem;
+    padding-inline: 0.65rem;
+  }
+
+  .sponsor-tile {
+    width: 220px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track-forward,
+  .marquee-track-reverse {
+    animation: none;
+  }
+}
